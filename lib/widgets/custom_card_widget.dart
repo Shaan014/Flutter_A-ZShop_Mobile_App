@@ -59,6 +59,7 @@ class CustomCardWidget extends StatelessWidget {
                   icon: const Icon(
                     Icons.favorite_border,
                     color: Color.fromARGB(255, 249, 246, 246),
+                    size: 32,
                   ),
                   onPressed: () {
                     // Add functionality for liking the card
@@ -74,7 +75,7 @@ class CustomCardWidget extends StatelessWidget {
               child: Image.asset(
                 imagePath,
                 width: double.infinity,
-                height: 180,
+                height: 350,
                 fit: BoxFit.cover,
               ),
             ),

@@ -2,28 +2,28 @@ class CardService {
   List<Map<String, String>> getCards() {
     return [
       {
-        'logoPath': 'assets/logo.png',
-        'title': 'Latest Gadgets',
-        'imagePath': 'assets/card4.jpg',
-        'description': 'Exciting offers on latest gadgets!',
-      },
-      {
-        'logoPath': 'assets/logo.png',
-        'title': 'Fashion Trends',
-        'imagePath': 'assets/card2.jpg',
-        'description': 'Exclusive discounts on fashion trends!',
-      },
-      {
-        'logoPath': 'assets/logo.png',
-        'title': 'New Furniture',
-        'imagePath': 'assets/card3.jpg',
-        'description': 'Explore our new collection of furniture!',
-      },
-      {
-        'logoPath': 'assets/logo.png',
-        'title': 'Electronics Sale',
+        'logoPath': 'assets/walmartlogo.jpg',
+        'title': 'Walmart',
         'imagePath': 'assets/card1.jpg',
-        'description': 'Special weekend sale on electronics!',
+        'description': 'New',
+      },
+      {
+        'logoPath': 'assets/spar.png',
+        'title': 'SPAR',
+        'imagePath': 'assets/card2.jpg',
+        'description': 'Great Savings!',
+      },
+      {
+        'logoPath': 'assets/cargills.png',
+        'title': 'Cargills Food',
+        'imagePath': 'assets/card4.jpg',
+        'description': '10% Discount',
+      },
+      {
+        'logoPath': 'assets/eleven.png',
+        'title': '7-Eleven',
+        'imagePath': 'assets/card3.jpg',
+        'description': 'On Sale',
       },
     ];
   }

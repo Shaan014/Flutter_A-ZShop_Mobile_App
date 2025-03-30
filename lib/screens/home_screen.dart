@@ -9,7 +9,6 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -62,121 +61,216 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset('assets/logo.jpg'), // Logo
-        ),
-        title: const Text(
-          'Online Store',
-          style: TextStyle(color: Colors.white, fontSize: 18),
-        ),
-        actions: const [
-          Icon(Icons.settings, color: Colors.white), // Settings Icon
-          SizedBox(width: 10),
-        ],
-        backgroundColor: const Color.fromARGB(255, 64, 67, 69),
-      ),
-      body: Container(
-        color: const Color.fromARGB(255, 40, 39, 39),
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Search Bar
-              Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.grey[800],
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: TextField(
-                  style: const TextStyle(color: Colors.grey),
-                  decoration: InputDecoration(
-                    hintText: 'Search deals and stores',
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    prefixIcon: const Icon(Icons.search, color: Colors.grey),
-                    border: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-
-              // Horizontal Scrollable Categories Bar
-              CategoriesBar(
-                categories: categories,
-                onCategorySelected: _onCategorySelected,
-              ),
-              const SizedBox(height: 15),
-
-              // Grocery Image Poster Section
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                elevation: 4,
-                child: Column(
+      backgroundColor: const Color.fromARGB(255, 40, 39, 39),
+      body: Column(
+        children: [
+          // Fixed Top Section
+          Container(
+            color: const Color.fromARGB(255, 64, 67, 69),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 27),
+            child: Column(
+              children: [
+                // Logo & Store Name
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        'assets/poster.jpg', // Grocery poster image
-                        width: double.infinity,
-                        height: 180, // Poster image height
-                        fit: BoxFit.cover,
-                      ),
+                    Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: Image.asset('assets/logo.jpg',
+                              height: 45, width: 45, fit: BoxFit.cover),
+                        ), // Store Logo
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Online Store',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'M1X 1M2',
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 43, 157, 250),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "Big Sale On Now",
-                      style: TextStyle(
-                        fontSize: 20, // Text size
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                    // Settings Icon
+                    const Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                      size: 30,
                     ),
-                    const SizedBox(height: 10),
                   ],
                 ),
-              ),
+                const SizedBox(height: 15),
 
-              const SizedBox(height: 15),
-
-              // White Separator Line
-              Container(
-                height: 2,
-                color: Colors.white,
-                margin: const EdgeInsets.symmetric(vertical: 10),
-              ),
-
-              // List of Cards
-              cardData.isNotEmpty
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: cardData.length,
-                      itemBuilder: (context, index) {
-                        return CustomCardWidget(
-                          title: cardData[index]['title'] ?? 'No Title',
-                          imagePath: cardData[index]['imagePath'] ??
-                              'assets/default.jpg',
-                          description: cardData[index]['description'] ??
-                              'No Description',
-                          logoPath: cardData[index]['logoPath'] ??
-                              'assets/default.jpg',
-                        );
-                      },
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(),
+                // Search Bar
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 105, 102, 102),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: const TextField(
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 235, 234, 234),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                    decoration: InputDecoration(
+                      hintText: 'Search deals and stores ',
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(255, 228, 226, 226),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Color.fromARGB(255, 198, 198, 198),
+                        size: 32,
+                      ),
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(vertical: 15.0),
                     ),
-            ],
+                  ),
+                ),
+                const SizedBox(height: 15),
+
+                // Horizontal Scrollable Categories Bar
+                CategoriesBar(
+                  categories: categories,
+                  onCategorySelected: _onCategorySelected,
+                ),
+              ],
+            ),
           ),
-        ),
+
+          // Scrollable Content
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  const SizedBox(height: 15),
+
+                  // Grocery Image Poster Section
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 4,
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            'assets/poster20.avif',
+                            width: 385,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        // const SizedBox(height: 14),
+                        // const Text(
+                        //   "Big Sale On Now...!",
+                        //   style: TextStyle(
+                        //     fontSize: 20,
+                        //     fontWeight: FontWeight.bold,
+                        //     color: Colors.black,
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 8),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 15),
+
+                  // Section Title with "See All"
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Left-side text
+                        const Text(
+                          "Great Canadian Savings",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 21,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+
+                        // Right-side "See All" text
+                        GestureDetector(
+                          onTap: () {
+                            // Add navigation or function for "See All" here
+                          },
+                          child: const Text(
+                            "See All",
+                            style: TextStyle(
+                              color: Color.fromARGB(
+                                  255, 43, 157, 250), // Blue color
+                              fontSize: 21,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // White Separator Line
+                  Container(
+                    height: 2,
+                    width: 380,
+                    color: Colors.white,
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                  ),
+
+                  // List of Cards
+                  cardData.isNotEmpty
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: cardData.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0), // Adjust padding
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width *
+                                    0.6, // 90% of screen width
+                                child: CustomCardWidget(
+                                  title: cardData[index]['title'] ?? 'No Title',
+                                  imagePath: cardData[index]['imagePath'] ??
+                                      'assets/default.jpg',
+                                  description: cardData[index]['description'] ??
+                                      'No Description',
+                                  logoPath: cardData[index]['logoPath'] ??
+                                      'assets/default.jpg',
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavBar(
         currentIndex: _selectedIndex,

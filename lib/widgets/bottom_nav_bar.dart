@@ -21,20 +21,39 @@ class _BottomNavBarState extends State<BottomNavBar> {
       backgroundColor: const Color.fromARGB(255, 45, 44, 44),
       selectedItemColor: Colors.blue, // Highlight selected icon in blue
       unselectedItemColor:
-          Color.fromARGB(255, 248, 245, 245), // Other icons in grey
+          const Color.fromARGB(255, 248, 245, 245), // Other icons in grey
       showSelectedLabels: true, // Show labels
       showUnselectedLabels: true,
+
+      // Set label text size
+      selectedLabelStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),
+      unselectedLabelStyle: const TextStyle(
+        fontSize: 17,
+      ),
+
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.store),
+          icon: Icon(
+            Icons.store,
+            size: 30,
+          ),
           label: 'Browse',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
+          icon: Icon(
+            Icons.search,
+            size: 30,
+          ),
           label: 'Search',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.list),
+          icon: Icon(
+            Icons.list,
+            size: 30,
+          ),
           label: 'Lists',
         ),
       ],

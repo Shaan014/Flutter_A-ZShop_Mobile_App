@@ -24,8 +24,11 @@ class _CategoriesBarState extends State<CategoriesBar> {
       height: 50,
       child: Row(
         children: [
-          const Icon(Icons.favorite,
-              color: Color.fromARGB(255, 233, 230, 229)), // Heart icon
+          const Icon(
+            Icons.favorite,
+            color: Color.fromARGB(255, 233, 230, 229),
+            size: 32,
+          ), // Heart icon
           const SizedBox(width: 10),
           Expanded(
             child: ListView.builder(
@@ -48,13 +51,13 @@ class _CategoriesBarState extends State<CategoriesBar> {
                           widget.categories[index],
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         if (selectedIndex == index)
                           Container(
-                            width: 50,
+                            width: 60,
                             height: 3,
                             color: Colors.blue, // Blue underline for selection
                           ),
